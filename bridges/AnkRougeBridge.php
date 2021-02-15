@@ -12,7 +12,7 @@ class AnkRougeBridge extends BridgeAbstract {
 
 		$mainUrl = "http://blog.ailand-store.jp";
 
-		foreach($html->find('.section') as $element) {
+		foreach($html->find('.entry.section') as $element) {
 			$item = array();
 
 			$snippet = $element->find('.content .text', 0);
