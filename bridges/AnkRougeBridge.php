@@ -17,12 +17,15 @@ class AnkRougeBridge extends BridgeAbstract {
 			$link = $element->find('.title a', 0);
 
 			$item['title'] = $link->plaintext;
-			$item['content'] = $snippet->innertext;
 			$item['uri'] = $link->href;
 			$item['timestamp'] = strtotime($element->find('p.date', 0)->plaintext);
 
+			$pattern = 'src=\\"';
+			$content = $snippet->innertext;
+			$item['content'] = preg_replace($pattern, 'src="http://blog.ailand-store.jp/', $content);
+			
 			$this->items[] = $item;
 		}
-
 	}
+
 }
