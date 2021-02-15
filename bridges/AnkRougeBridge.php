@@ -10,6 +10,8 @@ class AnkRougeBridge extends BridgeAbstract {
 		$html = getSimpleHTMLDOMCached(self::getURI())
 			or returnServerError('Could not load content');
 
+		$mainUrl = "http://blog.ailand-store.jp/";
+
 		foreach($html->find('.section') as $element) {
 			$item = array();
 
@@ -18,7 +20,7 @@ class AnkRougeBridge extends BridgeAbstract {
 
 			$item['title'] = $link->plaintext;
 			$item['content'] = $snippet->innertext;
-			$item['uri'] = $link->href;
+			$item['uri'] = $mainUrl . $link->href;
 			$item['timestamp'] = strtotime($element->find('p.date', 0)->plaintext);
 
 			$this->items[] = $item;
