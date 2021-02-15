@@ -22,7 +22,7 @@ class AnkRougeBridge extends BridgeAbstract {
 
 			$pattern = 'src=\\"';
 			$content = $snippet->innertext;
-			$item['content'] = $content;
+			$item['content'] = preg_replace($pattern, 'src="http://blog.ailand-store.jp/', $content);
 			
 			$this->items[] = $item;
 		}
