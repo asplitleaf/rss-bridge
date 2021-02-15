@@ -20,7 +20,7 @@ class AnkRougeBridge extends BridgeAbstract {
 
 			$item['title'] = $link->plaintext;
 			$item['uri'] = $mainUrl . $link->href;
-			$item['timestamp'] = $element->find('p.date', 0)->plaintext;
+			$item['timestamp'] = strtotime($element->find('p.date', 0));
 
 			$content = $snippet->innertext;
 			$content = str_replace("/data/", $mainUrl . "/data/", $content);
